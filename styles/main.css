@@ -12,6 +12,7 @@ header {
     background-color: #282c34;
     color: #fff;
     padding: 1rem 0;
+    margin: 0;
 }
 
 header .container {
@@ -235,3 +236,140 @@ footer .container {
     font-size: 24px;
     margin-right: 10px;
 }
+
+header input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #61dafb;
+    outline: none;
+    font-size: 16px;
+    transition: width 0.4s ease-in-out;
+}
+
+header input[type="text"]:focus {
+    width: 350px; /* Expands on focus */
+    border-color: #007bff; /* Changes border color */
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 40px; /* Adjusts based on input position */
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.autocomplete-items div:hover {
+    background-color: #f0f0f0;
+}
+
+.autocomplete-active {
+    background-color: #007bff !important;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+nav ul {
+    list-style: none;
+    margin-right: 0;
+    float: right;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a:hover {
+    color: #0056b3;
+}
+
+input[type="text"] {
+    width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid #61dafb;
+    outline: none;
+    font-size: 16px;
+    transition: width 0.4s ease-in-out;
+    margin-top: 10px; /* Add some margin to the top for spacing */
+    margin-left: 20px;
+    float: right;
+}
+
+input[type="text"]:focus {
+    width: 350px;
+    border-color: #007bff;
+}
+
+/* Autocomplete container for positioning relative to the search box */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ensure the container aligns with the search box width */
+}
+
+/* Autocomplete dropdown styling */
+.autocomplete-items {
+    position: absolute;
+    top: 100%; /* Make sure it starts below the input field */
+    left: 0; /* Align with the left of the input field */
+    right: 0; /* Ensure it matches the width of the input */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 99;
+    max-height: 200px; /* Set a max height for overflow */
+    overflow-y: auto; /* Enable scrolling if content exceeds max height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Each item in the autocomplete dropdown */
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text for contrast */
+}
+
+/* Hover effect for autocomplete items */
+.autocomplete-items div:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Highlighted item when navigating using keyboard */
+.autocomplete-active {
+    background-color: #007bff !important; /* Blue background */
+    color: white; /* White text on active */
+}
+
+.header-right-box{
+    width: 350px;
+    float: right;
+    margin-right:0px;
+}
+
