@@ -17,12 +17,12 @@
                 <div>
                     <nav>
                         <ul>
-                            <li><div class="current-page">Home</div></li>
+                            <li><a href="index.html">Home</a></li>
                             <li><a href="pages/game_index.html">Games</a></li>
                         </ul>
                     </nav>
                     <div class="autocomplete">
-                        <input type="text" id="search-game" placeholder="Search games..." />
+                        <input class="search" type="text" id="search-game" placeholder="Search games..." />
                     </div>
                 </div>
             </div>
@@ -32,7 +32,42 @@
 
     <main>
         <div id="main_content" class="main-container">
-            <div>This is the homepage</div>
+            <section class="hero">
+                <div class="container">
+                    <h2>Master Your Gaming Controls</h2>
+                    <p>Become a pro by learning and mastering the controls for your favorite games.</p>
+                    <a href="pages/game_index.html" class="cta-button">Start Exploring</a>
+                </div>
+            </section>
+            <section class="featured-games">
+                <div class="container">
+                    <h3>Newly Added</h3>
+                    <div >
+                        <a class="game-index-anchor" href="../index.html?game=minecraft">
+                            <div class="game-index-item"><img class="game-title"
+                                    src="../images/games/minecraft/minecraft_logo.png" alt="Minecraft Logo">
+
+                                 <p>Minecraft is a popular sandbox game known for its open-world
+                                    creativity and
+                                    survival
+                                    aspects. </p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section class="cta">
+                <div class="container">
+                    <h3>Find the Best Control Schemes for Any Game</h3>
+                    <p>Search through our growing collection of gaming control schemes, tips, and tricks.</p>
+                    <div class="autocomplete">
+                        <input class="search" type="text" id="search-game" placeholder="Search games..." />
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     <footer>

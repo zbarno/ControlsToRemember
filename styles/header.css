@@ -119,10 +119,13 @@ footer .container {
     margin: 0 auto;
 }
 
-
-header input[type="text"] {
-    padding: 10px;
+.header-container .search{
     width: 250px;
+}
+
+.search {
+    padding: 10px;
+    
     border-radius: 25px;
     border: 2px solid #61dafb;
     outline: none;
@@ -133,7 +136,7 @@ header input[type="text"] {
     margin-right: auto;
 }
 
-header input[type="text"]:focus {
+.search:focus {
     /* width: 350px; */
     border-color: #007bff;
 }
@@ -172,7 +175,7 @@ header input[type="text"]:focus {
         padding-left: 20px;
     }
 
-    header input[type="text"] {
+    .header-container .search {
         display: block;
         width: 90%;
         margin: auto;
