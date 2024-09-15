@@ -1,0 +1,174 @@
+header {
+    background-color: #282c34;
+    color: white;
+    padding: 10px 5px;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+
+/* Autocomplete container for positioning relative to the search box */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    /* Ensure the container aligns with the search box width */
+}
+
+/* Autocomplete dropdown styling */
+.autocomplete-items {
+    position: absolute;
+    top: 100%;
+    /* Make sure it starts below the input field */
+    left: 0;
+    /* Align with the left of the input field */
+    right: 0;
+    /* Ensure it matches the width of the input */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    z-index: 99;
+    max-height: 200px;
+    /* Set a max height for overflow */
+    overflow-y: auto;
+    /* Enable scrolling if content exceeds max height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+}
+
+/* Each item in the autocomplete dropdown */
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    /* White background */
+    color: #000;
+    /* Black text for contrast */
+}
+
+/* Hover effect for autocomplete items */
+.autocomplete-items div:hover {
+    background-color: #f0f0f0;
+    /* Light gray background on hover */
+}
+
+/* Highlighted item when navigating using keyboard */
+.autocomplete-active {
+    background-color: #007bff !important;
+    /* Blue background */
+    color: white;
+    /* White text on active */
+}
+
+
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 0px;
+}
+
+nav ul li a {
+    color: #61dafb;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #282c34;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+footer .container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+header input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border-radius: 25px;
+    border: 2px solid #61dafb;
+    outline: none;
+    font-size: 16px;
+    /* transition: width 0.4s ease-in-out; */
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header input[type="text"]:focus {
+    /* width: 350px; */
+    border-color: #007bff;
+}
+
+.header-right-box{
+   
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 100%; */
+    /* margin: 0 auto; */
+    padding: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+    header .header-container {
+        display: block;
+        text-align: center;
+    }
+
+    header h1 {
+        margin-bottom: 10px;
+    }
+
+    header nav ul {
+        /* display: block; */
+        padding: 0;
+    }
+
+
+    header nav ul li {
+        margin: 10px 10px 10px 0px;
+        padding-left: 20px;
+    }
+
+    header input[type="text"] {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+}

@@ -9,8 +9,9 @@ const games = [
 
 
 document.addEventListener('DOMContentLoaded', function () {
-
-    active_controls();
+   get_article_content("minecraft", document.getElementById("main_content")).then(() => {
+        active_controls();
+   });
 });
 
 function active_controls() {
