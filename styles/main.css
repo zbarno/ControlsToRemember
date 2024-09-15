@@ -187,6 +187,21 @@ ul li {
     font-size: 24px;
     margin-right: 10px;
 }
+
+.game-index-anchor{
+    text-decoration: none;
+    color:#000000 ;
+}
+.game-index-item{
+    padding: 20px;
+    color:#000000 ;
+    border: #000000;
+    border-width: 7px;
+    border-style: outset;
+    background-color: #dddddd;
+    font-size: 14pt;
+}
+
 @media screen and (max-width: 768px) {
     .gallery {
         display: flex;           /* Use Flexbox for layout */

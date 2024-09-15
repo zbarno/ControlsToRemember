@@ -1,17 +1,26 @@
 // scripts/main.js
 const games = [
     //["Suggestion Text","Article Name"]
-    ["Minecraft","minecraft"],
-    
+    ["Minecraft", "minecraft"],
+
 ];
 
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
-   get_article_content("minecraft", document.getElementById("main_content")).then(() => {
+    const params = new URLSearchParams(window.location.search); // Get URLSearchParams object from the query string
+    const gameParam = params.get('game'); // Get the value of 'user' parameter
+
+    if (gameParam) {
+        get_article_content(gameParam, document.getElementById("main_content")).then(() => {
+            active_controls();
+        });
+    }
+    else {
         active_controls();
-   });
+    }
+
 });
 
 function active_controls() {
