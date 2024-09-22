@@ -1,9 +1,13 @@
 async function get_article_content(article_name, target_element){
     try {
         // Fetch the content of the file
-        //TODO: The deplyed version must be the full url
-        const response = await fetch("https://greaterthan000.github.io/ControlsToRemember/articles/" + article_name + ".html");
-        //const response = await fetch("../articles/" + article_name + ".html");
+        let response;
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            response = await fetch("../articles/" + article_name + ".html");
+        } else {
+            response = await fetch("https://greaterthan000.github.io/ControlsToRemember/articles/" + article_name + ".html");
+        }
+       
         // Check if the fetch was successful
         if (!response.ok) {
             throw new Error('Network response was not ok');

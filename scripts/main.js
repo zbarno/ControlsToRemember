@@ -1,32 +1,83 @@
 // scripts/main.js
+/*
+Connecting a suggestion to an article file
+*/
 const games = [
-    //["Suggestion Text","Article Name"]
-    ["Minecraft", "minecraft"],
+    //["Autocomplete suggestion Text","Article Name or file name for the artricle in the articles folder without the file extension"]
+    ["Minecraft", "minecraft"]
 
 ];
 
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
+/*
+This will load a game article based on the "game" parameter in the URL
+Example: /index.html?game=minecraft
+*/
+function page_loaded() {
+    //Look in url for game parameter "www.controlbuddies.xyz/index.html?game=minecraft"
     const params = new URLSearchParams(window.location.search); // Get URLSearchParams object from the query string
-    const gameParam = params.get('game'); // Get the value of 'user' parameter
+    const gameParam = params.get('game'); // Get the value of 'game' parameter ("minecraft" in example url)
 
     if (gameParam) {
         get_article_content(gameParam, document.getElementById("main_content")).then(() => {
-            active_controls();
+            finish_setting_up_page_elements();
         });
     }
     else {
-        active_controls();
+        finish_setting_up_page_elements();
     }
 
-});
+}
 
-function active_controls() {
+//When the browser finishes loading the page, call the page_loaded function
+document.addEventListener('DOMContentLoaded', page_loaded);
+
+/*
+Adds funtionality to interactive elements
+ */
+function finish_setting_up_page_elements() {
+    setup_accordian_buttons();
+
+    setup_gallery();
+}
+/*
+Makes the thumbnails clickable and displays large pop up when clicked.
+*/
+function setup_gallery() {
+    //Grab elements from page 
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const closeModal = document.getElementById('close-modal');
+
+    //For each thumbnail add click event
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const fullSizeImage = item.getAttribute('data-full');
+            modalImage.src = fullSizeImage;
+            modal.style.display = 'block';
+        });
+    });
+
+    //Adding the close button click on gallery pop up
+    window.addEventListener('click', (event) => {
+        if (event.target === modal || event.target == closeModal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+/*
+Adds inteactivity to the accordian buttons on page
+*/
+function setup_accordian_buttons() {
+    //Get all elements that have accordian-button or videos-button and stored them in an array
     const accordionButtons = document.querySelectorAll('.accordion-button, .videos-button');
 
+    //Will add click events to accordian buttons
     accordionButtons.forEach(button => {
+        //add the click event
         button.addEventListener('click', function () {
             // Toggle the active class for the clicked button
             this.classList.toggle('active');
@@ -52,39 +103,19 @@ function active_controls() {
 
 
     });
-
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const modal = document.getElementById('modal');
-    const modalImage = document.getElementById('modal-image');
-    const closeModal = document.getElementById('close-modal');
-
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const fullSizeImage = item.getAttribute('data-full');
-            modalImage.src = fullSizeImage;
-            modal.style.display = 'block';
-        });
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
 }
 
-function autocomplete(input, suggestions) {
+/*
+Showing suggestions as the user types in  the search bar
+*/
+function autocompleteBar(input, suggestions) {
     let currentFocus;
 
     input.addEventListener("input", function () {
         let val = this.value;
         closeAllLists();
         if (!val) return false;
-        currentFocus = -1;
+        currentFocus =  0;
 
         const listContainer = document.createElement("div");
         listContainer.setAttribute("id", this.id + "-autocomplete-list");
@@ -109,6 +140,7 @@ function autocomplete(input, suggestions) {
                 listContainer.appendChild(suggestionItem);
             }
         });
+
     });
 
     input.addEventListener("keydown", function (e) {
@@ -156,5 +188,13 @@ function autocomplete(input, suggestions) {
     });
 }
 
-const searchInput = document.querySelector('header input[type="text"]');
+function autocomplete(inputs, suggestions) {
+    for (var i = 0; i < inputs.length; i++) {
+        autocompleteBar(inputs[i], suggestions);
+    }
+}
+
+
+
+const searchInput = document.querySelectorAll('.search');
 autocomplete(searchInput, games);
