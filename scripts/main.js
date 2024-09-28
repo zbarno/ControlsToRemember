@@ -4,11 +4,10 @@ Connecting a suggestion to an article file
 */
 const games = [
     //["Autocomplete suggestion Text","Article Name or file name for the artricle in the articles folder without the file extension"]
-    ["Minecraft", "minecraft"]
-
+    ["Minecraft", "minecraft"],
+    ["Fortnite", "fortnite"],
+    ["Terraria", "terraria"]
 ];
-
-
 
 /*
 This will load a game article based on the "game" parameter in the URL
@@ -66,6 +65,20 @@ function setup_gallery() {
             modal.style.display = 'none';
         }
     });
+}
+
+
+function get_base_url(){
+    let url = "";
+
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        url = "http://localhost:3000";    
+    }else{
+        url = "https://greaterthan000.github.io";
+    }
+    
+    
+    return url;
 }
 
 /*
@@ -132,9 +145,10 @@ function autocompleteBar(input, suggestions) {
                     input.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
 
-                    get_article_content(game[1], document.getElementById("main_content")).then(() => {
-                        active_controls();
-                    });
+                    let url = get_base_url();
+
+                    window.location.href = url + '/index.html?game='+game[1];
+
                 });
 
                 listContainer.appendChild(suggestionItem);
@@ -198,3 +212,48 @@ function autocomplete(inputs, suggestions) {
 
 const searchInput = document.querySelectorAll('.search');
 autocomplete(searchInput, games);
+
+
+// Define the Konami Code sequence
+const konamiCode = [
+    'ArrowUp', 'ArrowUp', 
+    'ArrowDown', 'ArrowDown', 
+    'ArrowLeft', 'ArrowRight', 
+    'ArrowLeft', 'ArrowRight', 
+    'b', 'a'
+];
+
+// Variable to keep track of the current position in the code
+let currentPosition = 0;
+// Timer for reset
+let timeout;
+
+// Function to handle keydown events
+function onKeyDown(event) {
+    // Clear the timeout if a key is pressed
+    clearTimeout(timeout);
+    
+    // Check if the pressed key matches the current position in the Konami Code
+    if (event.key === konamiCode[currentPosition]) {
+        currentPosition++;
+        // Check if the entire code has been entered
+        if (currentPosition === konamiCode.length) {
+            window.location.href = "https://youtu.be/uHgt8giw1LY?si=zx4ygB6HQG4YrTcH"
+            reset();
+        } else {
+            // Set a timeout to reset if the user doesn't continue within 2 seconds
+            timeout = setTimeout(reset, 1000);
+        }
+    } else {
+        reset(); // Reset if the sequence is broken
+    }
+}
+
+// Function to reset the sequence
+function reset() {
+    currentPosition = 0;
+    clearTimeout(timeout); // Clear the timeout if it exists
+}
+
+// Attach the keydown event listener to the document
+document.addEventListener('keydown', onKeyDown);
