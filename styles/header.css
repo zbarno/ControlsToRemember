@@ -120,7 +120,7 @@ footer .container {
 }
 
 .header-container .search{
-    width: 250px;
+    width: 360px;
 }
 
 .search {
@@ -175,7 +175,7 @@ footer .container {
 
     header nav ul li {
         margin: 10px 10px 10px 0px;
-        padding-left: 20px;
+        padding-left: 10px;
     }
 
     .header-container .search {
