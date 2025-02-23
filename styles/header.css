@@ -175,7 +175,7 @@ footer .container {
 
     header nav ul li {
         margin: 10px 10px 10px 0px;
-        padding-left: 10px;
+        padding-left:0px;
     }
 
     .header-container .search {
